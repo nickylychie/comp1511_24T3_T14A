@@ -57,34 +57,10 @@ int main(void) {
     inventory.toppings = BASE_TOPPINGS;
 
     // Take the user's bubble tea order
-    struct bubble_tea order;
-    int type;
+    struct bubble_tea order = take_order();
 
-    printf("Enter bubble tea type (0: MILK TEA, 1: FRUIT TEA, 2: TARO MILK, "
-            "3: MATCHA LATTE): ");
-    scanf("%d", &type);
-    if (type == 0) {
-        order.type = MILK_TEA;
-    } else if (type == 1) {
-        order.type = FRUIT_TEA;
-    } else if (type == 2) {
-        order.type = TARO_MILK;
-    } else if (type == 3) {
-        order.type = MATCHA_LATTE;
-    }
-
-    printf("Enter topping (0: TAPIOCA PEARLS, 1: JELLY, 2: POPPING PEARLS, "
-            "3: ALOE VERA): ");
-    scanf("%d", &type);
-    if (type == 0) {
-        order.topping = TAPIOCA_PEARLS;
-    } else if (type == 1) {
-        order.topping = JELLY;
-    } else if (type == 2) {
-        order.topping = POPPING_PEARLS;
-    } else if (type == 3) {
-        order.topping = ALOE_VERA;
-    }
+    order = get_toppings(order);
+    
 
     printf("Enter topping qty: ");
     scanf("%d", &order.topping_qty);
@@ -149,3 +125,39 @@ int main(void) {
 ////////////////////////////////////////////////////////////////////////////////
 
 // TODO: Write function definitions here
+struct bubble_tea take_order(void) {
+    struct bubble_tea order;
+    int type;
+
+    printf("Enter bubble tea type (0: MILK TEA, 1: FRUIT TEA, 2: TARO MILK, "
+            "3: MATCHA LATTE): ");
+    scanf("%d", &type);
+    if (type == 0) {
+        order.type = MILK_TEA;
+    } else if (type == 1) {
+        order.type = FRUIT_TEA;
+    } else if (type == 2) {
+        order.type = TARO_MILK;
+    } else if (type == 3) {
+        order.type = MATCHA_LATTE;
+    }
+
+    return order;
+}
+
+struct bubble_tea get_toppings(struct bubble_tea order) {
+    printf("Enter topping (0: TAPIOCA PEARLS, 1: JELLY, 2: POPPING PEARLS, "
+            "3: ALOE VERA): ");
+    scanf("%d", &type);
+    if (type == 0) {
+        order.topping = TAPIOCA_PEARLS;
+    } else if (type == 1) {
+        order.topping = JELLY;
+    } else if (type == 2) {
+        order.topping = POPPING_PEARLS;
+    } else if (type == 3) {
+        order.topping = ALOE_VERA;
+    }
+
+    return order;
+}
